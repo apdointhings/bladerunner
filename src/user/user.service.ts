@@ -8,30 +8,31 @@ import { UpdateUserDto } from './dto/update-user.dto';
 @Injectable()
 export class UserService {
 
-    // @InjectRepository(UserEntity)
-    // private userRepository:Repository<UserEntity>
-    // constructor( userRepository:Repository<UserEntity>){
-    //     this.userRepository = userRepository;
-    // }
     constructor(
         @InjectRepository(UserEntity)
         private userRepository: Repository<UserEntity>,
       ) {}
+
     get():Promise<UserEntity[]>{
         return this.userRepository.find();
     }
-    create(ganja:CreateUserDto){
-        return this.userRepository.save(ganja);
+
+    create(createuserdto:CreateUserDto){
+        return this.userRepository.save(createuserdto);
     }
+
     findbyemail(email:string){
         return this.userRepository.findOne({where:{email}});
     }
-    delete(ganja:number){
-        return this.userRepository.delete(ganja);
+
+    delete(id:number){
+        return this.userRepository.delete(id);
     }
-    dikhao(id:number){
+
+    show(id:number){
         return this.userRepository.findOne({where: {id}});
     }
+
     update(updateusedto:UpdateUserDto , id:number){
         return this.userRepository.update(id,updateusedto);
     }
