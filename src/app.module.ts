@@ -5,18 +5,19 @@ import { UserModule } from './user/user.module';
 import { UserEntity } from './user/entity/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [UserModule , TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'sql6.freesqldatabase.com',
-    port: 3306,
-    username: "sql6700191",
-    password: '9e4T5889xs',
-    database: 'sql6700191',
-    entities: [UserEntity],
-    synchronize: true,
-  }), AuthModule,],
+      host: 'mysql-146c00eb-abhinavpal987654321-da71.c.aivencloud.com',
+      port: 14973,
+      username: 'avnadmin',
+      password: 'AVNS_JDvlFO7IvymIP0a-bTA',
+      database: 'defaultdb',
+      entities: [UserEntity],
+      synchronize: true,
+  }), AuthModule,ProfileModule],
   controllers: [AppController],
   providers: [AppService],
 })
